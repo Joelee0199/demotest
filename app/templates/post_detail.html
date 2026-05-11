@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}{{ post.title }} - 极简博客{% endblock %}
+
+{% block content %}
+<article>
+    <h1>{{ post.title }}</h1>
+    <small>{{ post.created_at.strftime('%Y-%m-%d %H:%M') }}</small>
+    <div style="margin-top:20px;white-space:pre-wrap;">{{ post.body }}</div>
+
+    {% if current_user.is_authenticated and current_user.id == post.author_id %}
+    <form action="{{ url_for('posts.delete_post', post_id=post.id) }}"
+          method="post" style="margin-top:20px;">
+        <button type="submit"
+                onclick="return confirm('确定要删除这篇文章吗？');"
+                style="color:#c00;background:none;border:1px solid #c00;
+                       padding:5px 10px;cursor:pointer;">
+            删除文章
+        </button>
+    </form>
+    {% endif %}
+</article>
+<p style="margin-top:20px;">
+    <a href="{{ url_for('posts.index') }}">&larr; 返回首页</a>
+</p>
+{% endblock %}

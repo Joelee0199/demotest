@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}登录 - 极简博客{% endblock %}
+
+{% block content %}
+<h1>登录</h1>
+<form method="post">
+    <p>
+        <label for="email">邮箱：</label><br>
+        <input type="email" id="email" name="email" required
+               style="width:300px;">
+    </p>
+    <p>
+        <label for="password">密码：</label><br>
+        <input type="password" id="password" name="password" required
+               style="width:300px;">
+    </p>
+    <p>
+        <button type="submit">登录</button>
+    </p>
+</form>
+<p>还没有账号？<a href="{{ url_for('auth.register') }}">去注册</a></p>
+{% endblock %}

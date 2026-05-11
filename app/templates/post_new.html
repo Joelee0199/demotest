@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}写文章 - 极简博客{% endblock %}
+
+{% block content %}
+<h1>写文章</h1>
+<form method="post">
+    <p>
+        <label for="title">标题：</label><br>
+        <input type="text" id="title" name="title" required
+               style="width:100%;max-width:600px;">
+    </p>
+    <p>
+        <label for="body">正文：</label><br>
+        <textarea id="body" name="body" rows="15" required
+                  style="width:100%;max-width:600px;"></textarea>
+    </p>
+    <p>
+        <button type="submit">发布</button>
+        <a href="{{ url_for('posts.index') }}">取消</a>
+    </p>
+</form>
+{% endblock %}
